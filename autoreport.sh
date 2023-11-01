@@ -105,3 +105,5 @@ fi
 
 rm $cookie_file
 rm $commit_log_dir/*
+
+notify-send "Dyno report" "Dyno report for today has been finised"
