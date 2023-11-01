@@ -104,4 +104,4 @@ else
 fi
 
 rm $cookie_file
-# rm $commit_log_dir/*
+rm $commit_log_dir/*
