@@ -1,6 +1,9 @@
 #!/bin/bash
 
-commit_log_file="/home/cryogenick/Dev/Dyno_hack/commit_log.txt"
+project_number=291 #DanERP Pilot
+platform=9 #Java
+
+commit_log_file="/home/cryogenick/Dev/Dyno_hack/commit_log/$project_number_$platform"
 
 latest_commit_message=$(git log -1 --pretty=%s)
 
