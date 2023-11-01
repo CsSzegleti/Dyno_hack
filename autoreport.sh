@@ -8,6 +8,10 @@ commit_log_dir="commit_log"
 project_number=291 #DanERP Pilot
 platform=9 #Java
 
+if [ ! -d $commit_log_dir ]; then
+    mkdir $commit_log_dir
+fi
+
 numprojects=$(find $commit_log_dir -maxdepth 1 -type f | wc -l)
 working_hour_amongst_projects=8.0
 
