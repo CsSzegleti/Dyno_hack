@@ -1,0 +1,11 @@
+commit_log_file="/home/cryogenick/Dev/Dyno_hack/commit_log.txt"
+
+latest_commit_message=$(git log -1 --pretty=%s)
+
+if [ -e $commit_log_file ]; then
+    if [ -s $commit_log_file ]; then
+        echo -n " | " >> "$commit_log_file"
+    fi
+fi
+
+echo -n "$latest_commit_message" >> "$commit_log_file"
