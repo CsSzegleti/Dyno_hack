@@ -4,6 +4,12 @@ cookie_file="cookies.txt"
 credentials_file="credentials.txt"
 commit_log_dir="commit_log"
 
+if [ ! -z $1 ] && [ -z $2 ]; then
+    >&2 echo "Error: project number supplemented, but no platform provided."
+    exit 1
+fi
+
+
 #default project and platform values
 if [ ! -z $1 ]; then
     project_number=$1
