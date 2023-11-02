@@ -4,9 +4,18 @@ cookie_file="cookies.txt"
 credentials_file="credentials.txt"
 commit_log_dir="commit_log"
 
-#default project values
-project_number=291 #DanERP Pilot
-platform=9 #Java
+#default project and platform values
+if [ ! -z $1 ]; then
+    project_number=$1
+else
+    project_number=291 #DanERP Pilot
+fi
+
+if [ ! -z $2 ]; then
+    platform=$2
+else
+    platform=9 #Java
+fi
 
 if [ ! -d $commit_log_dir ]; then
     mkdir $commit_log_dir
