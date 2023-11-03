@@ -6,6 +6,11 @@ cd $current_path
 cookie_file="cookies.txt"
 credentials_file="credentials.txt"
 
+if [ ! -e $credentials_file ]; then
+    >&2 echo "Error: no credentials file"
+    exit 1
+fi
+
 user_name=$(awk '{print $1}' "$credentials_file")
 password=$(awk '{print $2}' "$credentials_file")
 
