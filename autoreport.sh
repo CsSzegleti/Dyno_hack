@@ -1,5 +1,8 @@
 #!/bin/bash
 
+current_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+cd $current_path
+
 cookie_file="cookies.txt"
 credentials_file="credentials.txt"
 commit_log_dir="commit_log"
@@ -10,7 +13,6 @@ if [ ! -z $1 ] && [ -z $2 ]; then
 fi
 
 
-#default project and platform values
 if [ ! -z $1 ]; then
     project_number=$1
 else
@@ -118,11 +120,11 @@ if [ $numprojects -ne 0 ]; then
     for commit_log_file in $commit_log_dir/*; do
         log_to_dyno
     done
+    rm $commit_log_dir/*
 else
     log_to_dyno
 fi
 
 rm $cookie_file
-rm $commit_log_dir/*
 
 notify-send "Dyno report" "Dyno report for today has been finised"
