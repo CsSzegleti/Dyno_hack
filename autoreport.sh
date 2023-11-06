@@ -15,7 +15,8 @@ fi
 ./login.sh
 
 if [ $? -ne 0 ]; then
-    echo 'Login unsuccessful'
+    >&2 echo "Error: Login unsuccessful."
+    notify-send "Dyno report error" "There has been an error during auto report." 2> /dev/null
     exit 1
 fi
 
@@ -80,8 +81,6 @@ log_to_dyno() {
     --data-raw $report_data \
     --compressed)
 
-    echo $report_status_code
-
     if [[ $report_status_code -ge 300 ]]; then
         >&2 echo "Error: There has been an error during auto report."
         notify-send "Dyno report error" "There has been an error during auto report." 2> /dev/null
@@ -102,4 +101,5 @@ fi
 
 rm $cookie_file
 
+echo 'Dyno report for today has been finised'
 notify-send "Dyno report" "Dyno report for today has been finised" 2> /dev/null
